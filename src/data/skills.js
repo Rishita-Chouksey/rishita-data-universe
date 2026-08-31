@@ -1,0 +1,21 @@
+export const skillsData = [
+  { name: "Python", category: "core", desc: "Analysis / Automation / ML Models", position: [-2.5, 1.2, 0] },
+  { name: "SQL", category: "data", desc: "Complex Querying / Data Extraction", position: [-1.2, 2.0, -0.5] },
+  { name: "Pandas", category: "data", desc: "Clean → Transform → Structure", position: [-0.5, 0.8, 0.5] },
+  { name: "NumPy", category: "math", desc: "Array Vectorization & Linear Algebra", position: [1.1, 1.5, -0.2] },
+  { name: "Scikit-learn", category: "ml", desc: "Classical ML Algorithms & Pipelines", position: [2.3, 0.7, 0.4] },
+  { name: "Machine Learning", category: "ml", desc: "Supervised & Unsupervised Models", position: [1.8, -0.9, -0.3] },
+  { name: "NLP", category: "ml", desc: "Text Preprocessing & Semantic Embeddings", position: [0.3, -1.8, 0.6] },
+  { name: "Data Cleaning", category: "data", desc: "Outlier Resolution & Imputation", position: [-1.8, -1.2, -0.4] },
+  { name: "EDA", category: "data", desc: "Hypothesis Testing & Data Distributions", position: [-2.8, -0.2, 0.2] },
+  { name: "Matplotlib", category: "vis", desc: "Scientific 2D Data Plotting", position: [0.0, 0.0, 0.8] },
+  { name: "Data Visualization", category: "vis", desc: "Informative Storytelling via Charts", position: [2.7, -1.8, 0.1] },
+  { name: "MATLAB", category: "math", desc: "Mathematical Modeling & Matrix Logic", position: [-1.5, 3.0, -1.0] },
+  { name: "Jupyter", category: "tools", desc: "Iterative Research & Experimentation", position: [1.0, 2.7, -0.7] },
+  { name: "Excel", category: "data", desc: "Pivot Analytics & Data Auditing", position: [-3.2, 1.8, -0.8] },
+  { name: "Git", category: "tools", desc: "Version Tracking & Collaboration", position: [3.2, 1.6, -0.5] },
+  { name: "GitHub", category: "tools", desc: "Repository Management & CI Workflows", position: [3.0, 0.0, -0.9] },
+  { name: "C++", category: "core", desc: "Memory Optimization & Data Structures", position: [-0.8, -2.7, -0.6] },
+  { name: "HTML", category: "web", desc: "Semantic Document Structure", position: [1.8, -2.6, -0.2] },
+  { name: "CSS", category: "web", desc: "Responsive Styling & UI Design", position: [-2.2, -2.5, 0.3] }
+];
