@@ -1,53 +1,77 @@
 import React, { useState, useEffect } from 'react';
+import { ArrowRight, Terminal } from 'lucide-react';
 
-export default function LoadingScreen({ onComplete }) {
-  const [progress, setProgress] = useState(0);
-  const [ready, setReady] = useState(false);
+export default function LoadingScreen({ onEnterLab }) {
+  const [dataReady, setDataReady] = useState(false);
+  const [neuralReady, setNeuralReady] = useState(false);
+  const [visualReady, setVisualReady] = useState(false);
+  const [systemReady, setSystemReady] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setReady(true);
-          return 100;
-        }
-        return prev + Math.floor(Math.random() * 18) + 7;
-      });
-    }, 90);
+    const t1 = setTimeout(() => setDataReady(true), 350);
+    const t2 = setTimeout(() => setNeuralReady(true), 750);
+    const t3 = setTimeout(() => setVisualReady(true), 1150);
+    const t4 = setTimeout(() => setSystemReady(true), 1450);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+    };
   }, []);
 
   return (
-    <div className={`fixed inset-0 z-50 bg-[#060709] flex flex-col items-center justify-center p-6 transition-opacity duration-700 ${ready && progress >= 100 ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-      <div className="w-full max-w-md">
-        <div className="mono text-xs text-violet-400 mb-2 flex justify-between tracking-wider">
-          <span>INITIALIZING DATA UNIVERSE...</span>
-          <span>{Math.min(progress, 100)}%</span>
+    <div className="fixed inset-0 z-50 flex flex-col justify-between p-6 md:p-12 bg-transparent pointer-events-none">
+      {/* Top Identity Header */}
+      <div className="flex justify-between items-start">
+        <div className="mono text-xs tracking-widest text-violet-300 flex items-center gap-2">
+          <Terminal className="w-4 h-4 text-cyan-400" />
+          <span>RISHITA // DATA UNIVERSE</span>
         </div>
-        
-        {/* Minimal Progress Bar */}
-        <div className="h-[2px] w-full bg-white/10 overflow-hidden mb-6">
-          <div
-            className="h-full bg-gradient-to-r from-violet-500 to-cyan-400 transition-all duration-150"
-            style={{ width: `${Math.min(progress, 100)}%` }}
-          />
+        <div className="mono text-[10px] text-gray-500 hidden sm:block">
+          MITS · GWALIOR // BTMC24O1110
+        </div>
+      </div>
+
+      {/* Center Initialization Diagnostics */}
+      <div className="max-w-md mx-auto w-full text-center pointer-events-auto">
+        <div className="space-y-1.5 mono text-xs mb-8 text-left max-w-[280px] mx-auto bg-black/60 p-4 border border-white/10 backdrop-blur-md">
+          <div className="flex justify-between text-gray-400">
+            <span>DATA LAYER</span>
+            <span className={dataReady ? 'text-cyan-400' : 'text-gray-600'}>
+              {dataReady ? '...... READY' : '... QUEUED'}
+            </span>
+          </div>
+          <div className="flex justify-between text-gray-400">
+            <span>NEURAL LAYER</span>
+            <span className={neuralReady ? 'text-cyan-400' : 'text-gray-600'}>
+              {neuralReady ? '...... READY' : '... QUEUED'}
+            </span>
+          </div>
+          <div className="flex justify-between text-gray-400">
+            <span>VISUAL LAYER</span>
+            <span className={visualReady ? 'text-cyan-400' : 'text-gray-600'}>
+              {visualReady ? '...... READY' : '... QUEUED'}
+            </span>
+          </div>
         </div>
 
-        <div className="flex justify-between items-center text-[10px] mono text-gray-500">
-          <span>MATHEMATICS & COMPUTING</span>
-          <span>MITS GWALIOR</span>
-        </div>
-
-        {ready && (
+        {systemReady && (
           <button
-            onClick={onComplete}
-            className="mt-8 mx-auto block px-6 py-2 border border-violet-500/40 text-violet-300 mono text-xs hover:bg-violet-600/20 hover:border-violet-400 transition-colors tracking-widest cursor-pointer"
+            onClick={onEnterLab}
+            className="interactive-node inline-flex items-center gap-3 px-8 py-3.5 bg-violet-600/30 hover:bg-violet-600/50 border border-violet-400 text-white mono text-xs tracking-widest transition-all duration-300 shadow-[0_0_25px_rgba(139,92,246,0.35)] cursor-pointer group"
           >
-            ENTER THE UNIVERSE →
+            <span>ENTER THE LAB</span>
+            <ArrowRight className="w-4 h-4 text-cyan-300 group-hover:translate-x-1 transition-transform" />
           </button>
         )}
+      </div>
+
+      {/* Bottom status text */}
+      <div className="flex justify-between items-end mono text-[10px] text-gray-500">
+        <div>SYS_STATUS: {systemReady ? 'READY FOR INITIALIZATION' : 'CONSTRUCTING GEOMETRY...'}</div>
+        <div>MATHEMATICS & COMPUTING</div>
       </div>
     </div>
   );
