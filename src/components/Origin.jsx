@@ -53,7 +53,7 @@ export default function Origin() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* LEFT: Identity Artifact (Real Photo) */}
+          {/* LEFT: Identity Artifact */}
           <div className="lg:col-span-5 flex justify-center">
             <div
               ref={cardRef}
@@ -64,7 +64,7 @@ export default function Origin() {
                 transform: `perspective(1000px) rotateY(${mouseOffset.x}deg) rotateX(${-mouseOffset.y}deg)`
               }}
             >
-              {/* Outer Technical Borders & Reticles */}
+              {/* Outer Technical Borders */}
               <div className="absolute -inset-2 border border-white/10 pointer-events-none" />
               <div className="absolute -top-3 -left-3 w-4 h-4 border-t-2 border-l-2 border-cyan-400 pointer-events-none" />
               <div className="absolute -bottom-3 -right-3 w-4 h-4 border-b-2 border-r-2 border-violet-400 pointer-events-none" />
@@ -90,15 +90,6 @@ export default function Origin() {
                 {/* Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060709] via-transparent to-black/20 pointer-events-none" />
                 <div className="absolute inset-0 bg-violet-950/15 mix-blend-color pointer-events-none" />
-
-                {/* Subtle Grid */}
-                <div 
-                  className="absolute inset-0 pointer-events-none opacity-20"
-                  style={{
-                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)',
-                    backgroundSize: '24px 24px'
-                  }}
-                />
 
                 {/* Identifier Overlay */}
                 <div className="absolute bottom-3 left-3 right-3 p-2.5 bg-black/75 backdrop-blur-md border border-white/10 flex items-center justify-between">
