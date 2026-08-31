@@ -25,13 +25,13 @@ export default function Origin() {
     }
   ];
 
-  // Subtle interactive parallax for the Identity Artifact
+  // Parallax tilt effect for identity viewport
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setMouseOffset({ x: x * 14, y: y * 14 });
+    setMouseOffset({ x: x * 12, y: y * 12 });
   };
 
   const handleMouseLeave = () => {
@@ -53,7 +53,7 @@ export default function Origin() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* LEFT: Identity Artifact (Real Photo with Spatial Technical Frame) */}
+          {/* LEFT: Identity Artifact (Real Photo) */}
           <div className="lg:col-span-5 flex justify-center">
             <div
               ref={cardRef}
@@ -64,12 +64,12 @@ export default function Origin() {
                 transform: `perspective(1000px) rotateY(${mouseOffset.x}deg) rotateX(${-mouseOffset.y}deg)`
               }}
             >
-              {/* Outer Technical Frame & Reticles */}
+              {/* Outer Technical Borders & Reticles */}
               <div className="absolute -inset-2 border border-white/10 pointer-events-none" />
               <div className="absolute -top-3 -left-3 w-4 h-4 border-t-2 border-l-2 border-cyan-400 pointer-events-none" />
               <div className="absolute -bottom-3 -right-3 w-4 h-4 border-b-2 border-r-2 border-violet-400 pointer-events-none" />
 
-              {/* Holographic Header Metadata */}
+              {/* Header Telemetry */}
               <div className="p-3 bg-black/80 border-t border-x border-white/10 flex justify-between items-center mono text-[10px] text-gray-400">
                 <span className="flex items-center gap-1.5 text-cyan-300">
                   <Scan className="w-3 h-3 animate-pulse" />
@@ -80,7 +80,6 @@ export default function Origin() {
 
               {/* Portrait Container */}
               <div className="relative overflow-hidden bg-[#0a0c10] border border-white/15 aspect-[4/5]">
-                {/* Genuine Unaltered Photograph */}
                 <img
                   src={rishitaImg}
                   alt="Rishita Chouksey"
@@ -88,11 +87,11 @@ export default function Origin() {
                   loading="lazy"
                 />
 
-                {/* Cinematic Ambient Gradients */}
+                {/* Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060709] via-transparent to-black/20 pointer-events-none" />
                 <div className="absolute inset-0 bg-violet-950/15 mix-blend-color pointer-events-none" />
 
-                {/* Subtle Technical Grid Lines */}
+                {/* Subtle Grid */}
                 <div 
                   className="absolute inset-0 pointer-events-none opacity-20"
                   style={{
@@ -101,7 +100,7 @@ export default function Origin() {
                   }}
                 />
 
-                {/* Bottom Identifier Overlay */}
+                {/* Identifier Overlay */}
                 <div className="absolute bottom-3 left-3 right-3 p-2.5 bg-black/75 backdrop-blur-md border border-white/10 flex items-center justify-between">
                   <div>
                     <div className="text-xs font-medium text-white tracking-wide">RISHITA CHOUKSEY</div>
@@ -111,15 +110,15 @@ export default function Origin() {
                 </div>
               </div>
 
-              {/* Holographic Footer Readout */}
+              {/* Footer Telemetry */}
               <div className="p-2.5 bg-black/80 border-b border-x border-white/10 flex justify-between items-center mono text-[9px] text-gray-500">
                 <span>LATENT VECTOR: [0.94, 0.88, 1.00]</span>
-                <span className="text-emerald-400">STATUS: HUMAN OPERATOR</span>
+                <span className="text-emerald-400">STATUS: ACTIVE OPERATOR</span>
               </div>
             </div>
           </div>
 
-          {/* RIGHT: Narrative & Conceptual Nodes */}
+          {/* RIGHT: Narrative & Nodes */}
           <div className="lg:col-span-7 space-y-6">
             <div>
               <p className="mono text-xs text-cyan-400 uppercase tracking-widest mb-2">
@@ -134,7 +133,7 @@ export default function Origin() {
               I am a 3rd Year Mathematics & Computing undergraduate exploring how abstract mathematical principles can be engineered into intelligent, resilient systems. Rather than viewing machine learning as a black box, I work backwards from mathematical foundations to computational implementation.
             </p>
 
-            {/* Three Interactive Conceptual Nodes */}
+            {/* Three Conceptual Nodes */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
               {concepts.map((node, i) => {
                 const Icon = node.icon;
@@ -158,36 +157,6 @@ export default function Origin() {
               })}
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-          Rather than viewing code as syntax alone, I operate where mathematical theory meets practical software execution: transforming complex behavioral data and algorithmic rules into functional, human-centric systems.
-        </p>
-
-        {/* Conceptual Nodes */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {concepts.map((node, i) => {
-            const Icon = node.icon;
-            const isSelected = activeNode === i;
-            return (
-              <div
-                key={node.title}
-                onMouseEnter={() => setActiveNode(i)}
-                className={`p-6 cursor-pointer transition-all duration-300 data-panel ${
-                  isSelected ? 'data-panel-active' : 'hover:border-white/20'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="mono text-[10px] text-gray-400 tracking-widest">0{i + 1}</span>
-                  <Icon className={`w-5 h-5 ${isSelected ? 'text-cyan-400' : 'text-gray-500'}`} />
-                </div>
-                <h3 className="text-lg font-medium text-white mb-2 tracking-wide">{node.title}</h3>
-                <p className="text-xs text-gray-400 leading-relaxed font-light">{node.detail}</p>
-              </div>
-            );
-          })}
         </div>
       </div>
     </section>
